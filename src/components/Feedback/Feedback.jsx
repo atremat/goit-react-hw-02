@@ -2,8 +2,7 @@ import styles from "./Feedback.module.css";
 
 export default function Feedback({ rating: { good, neutral, bad } }) {
   const totalFeedback = good + neutral + bad;
-  const percentage =
-    totalFeedback && Math.round((100 * (good + neutral)) / totalFeedback);
+  const percentage = totalFeedback && Math.round((100 * good) / totalFeedback);
   return (
     <ul className={styles.list}>
       <li className={styles.item}>
