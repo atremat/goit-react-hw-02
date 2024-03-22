@@ -1,8 +1,19 @@
-.list {
+.container {
   margin-top: 20px;
+  display: flex;
+  gap: 150px;
+  align-items: center;
+}
+
+.list {
   list-style: none;
 }
 
 .item {
   padding-top: 5px;
+}
+
+.pieWrapper {
+  height: 278px;
+  width: 278px;
 }
