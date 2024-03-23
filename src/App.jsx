@@ -20,6 +20,7 @@ function App() {
 
   const { good, neutral, bad } = rating;
   const totalFeedback = good + neutral + bad;
+  const percentage = totalFeedback && Math.round((100 * good) / totalFeedback);
 
   useEffect(() => {
     window.localStorage.setItem("feedback", JSON.stringify(rating));
@@ -43,7 +44,15 @@ function App() {
     <div className={styles.appContainer}>
       <Description />
       <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} />
-      {totalFeedback > 0 ? <Feedback rating={rating} /> : <Notification />}
+      {totalFeedback > 0 ? (
+        <Feedback
+          rating={rating}
+          totalFeedback={totalFeedback}
+          percentage={percentage}
+        />
+      ) : (
+        <Notification />
+      )}
     </div>
   );
 }

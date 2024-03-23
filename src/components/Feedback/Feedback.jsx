@@ -2,10 +2,11 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import styles from "./Feedback.module.css";
 
-export default function Feedback({ rating: { good, neutral, bad } }) {
-  const totalFeedback = good + neutral + bad;
-  const percentage = totalFeedback && Math.round((100 * good) / totalFeedback);
-
+export default function Feedback({
+  rating: { good, neutral, bad },
+  totalFeedback,
+  percentage,
+}) {
   ChartJS.register(ArcElement, Tooltip, Legend);
 
   const data = {
