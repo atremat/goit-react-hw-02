@@ -6,13 +6,17 @@ import Options from "./components/Options/Options";
 import Notification from "./components/Notification/Notification";
 
 function App() {
-  const [rating, setRating] = useState(
-    JSON.parse(window.localStorage.getItem("feedback")) || {
+  const [rating, setRating] = useState(() => {
+    if (window.localStorage.getItem("feedback")) {
+      return JSON.parse(window.localStorage.getItem("feedback"));
+    }
+
+    return {
       good: 0,
       neutral: 0,
       bad: 0,
-    }
-  );
+    };
+  });
 
   const { good, neutral, bad } = rating;
   const totalFeedback = good + neutral + bad;
